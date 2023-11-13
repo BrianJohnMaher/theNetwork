@@ -93,7 +93,7 @@ module.exports = {
             }
 
             res.status(200).json({
-                message: 'Reaction Create',
+                message: 'Reaction Created',
                 reaction
             });
 
@@ -116,7 +116,7 @@ module.exports = {
             }
 
             res.status(200).json({
-                message: 'Reaction Delete',
+                message: 'Reaction Deleted',
                 reaction
             });
 
