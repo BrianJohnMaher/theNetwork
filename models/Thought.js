@@ -12,7 +12,7 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: function(createdAt) {
+            get: function (createdAt) {
                 return createdAt.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
             },
         },
@@ -21,14 +21,13 @@ const thoughtSchema = new Schema(
             required: true,
         },
         reactions: [reactionSchema]
-
     },
     {
         toJSON: {
             virtuals: true,
         },
         id: false,
-    },
+    }
 );
 
 thoughtSchema

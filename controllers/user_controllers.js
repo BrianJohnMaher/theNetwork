@@ -15,7 +15,7 @@ module.exports = {
 
     async getOneById(req, res) {
         try {
-            const user = await User.findById(req.params.id)
+            const user = await User.findById(req.params.userId)
                 .populate('thoughts').populate('friends');
 
             res.status(200).json(user);
@@ -42,7 +42,7 @@ module.exports = {
         try {
 
             const updated_user = await User.findByIdAndUpdate(
-                req.params.id,
+                req.params.userId,
                 {
                     $set: req.body
 
@@ -59,7 +59,7 @@ module.exports = {
 
     async deleteById(req, res) {
         try {
-            const user = await User.findByIdAndDelete(req.params.id);
+            const user = await User.findByIdAndDelete(req.params.userId);
 
             if (!user) {
                 return res.status(404).json({ message: 'User not found with that ID.' });

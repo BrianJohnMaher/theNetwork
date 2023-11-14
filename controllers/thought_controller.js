@@ -15,7 +15,7 @@ module.exports = {
 
     async getOneById(req, res) {
         try {
-            const thought = await Thought.findById(req.params.id);
+            const thought = await Thought.findById(req.params.thoughtId);
 
             res.json(thought);
 
@@ -27,13 +27,13 @@ module.exports = {
 
     async deleteOneById(req, res) {
         try {
-            const thought = await Thought.findByIdAndDelete(req.params.id);
+            const thought = await Thought.findByIdAndDelete(req.params.thoughtId);
 
             if (!thought) {
-                res.status(404).json({ message: 'User not found with that ID.' });
+                res.status(404).json({ message: 'Thought not found with that ID.' });
             }
 
-            res.status(200).json({ message: 'User was deleted', thought });
+            res.status(200).json({ message: 'Thought was deleted', thought });
 
         } catch (err) {
             console.log(err);
@@ -52,18 +52,18 @@ module.exports = {
                 { new: true }
             );
 
-            res.status(200).json({ message: 'Thought created!' }, user);
+            res.status(200).json(user);
 
         } catch (err) {
             console.log(err);
-            res.status(500).json({ message: err.message });
+            res.status(500).json(err);
         }
     },
 
     async update(req, res) {
         try {
 
-            const updated_thought = await Thought.findByIdAndUpdate(req.params.id, {
+            const updated_thought = await Thought.findByIdAndUpdate(req.params.thoughtId, {
                 $set: req.body
 
             }, { new: true })
@@ -79,7 +79,7 @@ module.exports = {
     async addReaction(req, res) {
         try {
             const reaction = await Thought.findByIdAndUpdate(
-                req.params.id,
+                req.params.thoughtId,
                 {
                     $addToSet: {
                         reactions: req.body
@@ -105,7 +105,7 @@ module.exports = {
 
     async deleteReaction(req, res) {
         try {
-            const reaction = await Thought.findByIdAndUpdate(req.params.id, {
+            const reaction = await Thought.findByIdAndUpdate(req.params.thoughtId, {
                 $pull: {
                     reactions: { reactionId: req.params.reactionId }
                 }
