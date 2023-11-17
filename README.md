@@ -42,6 +42,6 @@ GitHub account:
 
 >[https://github.com/BrianJohnMaher](https://github.com/BrianJhonMaher)
 
-Reach me through email here to ask any questions about the app!
+Reach me through email, here, with any questions about the app!
 
 >Email: [BMaher22@mac.com](mailto:BMaher22@mac.com)
